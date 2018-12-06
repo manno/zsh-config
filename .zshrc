@@ -14,6 +14,16 @@ load_zshd
 # clean up path
 path=($^path(N))
 
+## Overide:
+# set PATH so it includes user's private bin if it exists
+typeset -U path
+if [ -d ~/bin ]; then
+    path=(~/bin /usr/local/bin $path )
+fi
+
+# add super user paths
+path=(/sbin /usr/sbin /usr/local/sbin $path)
+
 ## Load more modules
 autoload zargs
 
@@ -22,4 +32,5 @@ if [ -x /usr/bin/ssh-add ] && [ "$SSH_AUTH_SOCK" != "" ] && [ -r "$SSH_AUTH_SOCK
     /usr/bin/ssh-add -l
 fi
 
+## Needs to go after other bindkey statements
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
