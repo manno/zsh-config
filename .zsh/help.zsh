@@ -141,6 +141,12 @@ ctrl-v                  next control key is shown in cmdline (usefull for bind)
 ctrl-s                  argh
 ctrl-q                  ah
 
+Previously typed commands
+==========================
+!!                     previous command
+!xxx                   where xxx is the most recent command STARTING with xxx
+!?xxx                  where xxx is the most recent command CONTAINING xxx (Note: the above command will not find the command if it doesn't start with your pattern. realizing this will save you a little bit of trouble.
+^string1^string2       this REPEATS the last command replacing string1 with string2. I love to use this one on lengthy commands that I need to repeat slightly changed again.
 "
 }
 
