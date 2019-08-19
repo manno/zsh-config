@@ -47,3 +47,4 @@ export LC_TIME="de_DE.UTF-8"
 
 # undocumented?
 export LC_TYPE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
