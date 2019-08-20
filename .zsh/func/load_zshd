@@ -13,7 +13,7 @@ load_zshd () {
 
     # Load configs, call profile function
     echo -en "${blue}loading: ${col}"
-    for i ($HOME/$ddir/*.zsh(.)) { 
+    for i ($HOME/$ddir/*.zsh(.,@)) {
         # ignore ".files"
         if [[ $i != .* ]]; then
             echo -en "${grey}$(basename $i .zsh)${col}"
