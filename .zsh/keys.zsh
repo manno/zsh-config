@@ -39,9 +39,8 @@ elif [ "$OS" = "Windows_NT" ]; then
     bindkey '^[[1;5C' forward-word
     bindkey '^[[1;5D' backward-word
 
-else #  linux
-
-    load_zkdb_file
+#else #  linux
+#   load_zkdb_file
 fi
 
 bindkey "${key[Home]}" beginning-of-line
