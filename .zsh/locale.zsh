@@ -14,6 +14,7 @@ LC_COLLATE=C
 
 # LC_CTYPE - Character classification and case conversion.
 #LC_CTYPE=
+export LC_CTYPE="en_US.UTF-8"
 
 # LC_DATE - ???
 export LC_DATE=de_DE.UTF-8
@@ -47,4 +48,3 @@ export LC_TIME="de_DE.UTF-8"
 
 # undocumented?
 export LC_TYPE="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"

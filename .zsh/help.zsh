@@ -179,3 +179,13 @@ echo -e "
 
 "
 }
+
+help-curl () {
+echo -e "
+    List of shell websites
+    ======================
+    curl cheat.sh
+    curl v2.wttr.in
+    curl ifconfig.me
+"
+}
