@@ -19,7 +19,7 @@ load_zshd () {
             echo -en "${grey}$(basename $i .zsh)${col}"
             source $i 2> /dev/null
             found=''
-            if [ $? != 0 ]; then 
+            if [ $? != 0 ]; then
                 found="${red}☐${col}"
             else
                 found="${blue}☑${col}"

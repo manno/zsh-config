@@ -39,7 +39,8 @@ rvm_prompt_wrapper () {
 }
 
 if [ "$TERM" != "screen" ]; then
-    RPROMPT=$'${del}$(vcs_info_wrapper)$(rvm_prompt_wrapper)%{$reset_color%}'
+    #RPROMPT=$'${del}$(vcs_info_wrapper)$(rvm_prompt_wrapper)%{$reset_color%}'
+    RPROMPT=$'${del}$(vcs_info_wrapper)%{$reset_color%}'
 fi
 
 # PROMPT CONFIG

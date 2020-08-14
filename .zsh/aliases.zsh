@@ -32,4 +32,7 @@ alias reload='source $HOME/.zshrc'
 alias -g vi!='vi `fc -n | xargs`'
 
 # git
-alias -g nogo='":!*_test.go" ":!*fake*.go"'
+#
+#alias gitex=':(exclude)*.js'
+#alias gitex=':!*_test.go'
+alias -g nogo='":!*_test.go" ":!*fake*.go" ":!vendor/*"'
