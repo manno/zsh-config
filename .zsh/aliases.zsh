@@ -33,6 +33,6 @@ alias -g vi!='vi `fc -n | xargs`'
 
 # git
 #
-#alias gitex=':(exclude)*.js'
-#alias gitex=':!*_test.go'
+# git grep text nogo
 alias -g nogo='":!*_test.go" ":!*fake*.go" ":!vendor/*"'
+# ls *.go~_test.go
