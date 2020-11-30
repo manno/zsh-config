@@ -17,12 +17,15 @@ check_kbd() {
     fi
 }
 
-check_kbd ~/.zkbd/$TERM-$VENDOR-$OSTYPE
+check_kbd ~/.zkbd/"$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}"
 if [ "$ZKBD_CONFIG" = "" ]; then
-    check_kbd ~/.zkbd/$TERM-$VENDOR
+    check_kbd ~/.zkbd/"$TERM-$VENDOR-$OSTYPE"
 fi
 if [ "$ZKBD_CONFIG" = "" ]; then
-    check_kbd ~/.zkbd/$TERM
+    check_kbd ~/.zkbd/"$TERM-$VENDOR"
+fi
+if [ "$ZKBD_CONFIG" = "" ]; then
+    check_kbd ~/.zkbd/"$TERM"
 fi
 
 if [ "$ZKBD_CONFIG" = "" ]; then
