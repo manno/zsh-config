@@ -3,51 +3,43 @@
 # disable suspend
 stty -ixon -ixoff
 
-bindkey -e                              # EMACS
-autoload zkbd
+# emacs bindings
+bindkey -e
 
-load_zkdb_file() {
-    found_kbd="0"
-    check_kbd() {
-        file=$1
-        if [ -f "$file" ]; then
-            found_kbd="1"
-            source "$file"
-        fi
-    }
-    check_kbd ~/.zkbd/$TERM-$VENDOR-$OSTYPE
-    if [ "$found_kbd" = "0" ]; then
-        echo -e "\e[0;36m"
-        echo
-        echo not found: ~/.zkbd/$TERM-$VENDOR-$OSTYPE
-        zkbd
-        cp ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ~/.zkbd/$TERM-$VENDOR-$OSTYPE
+# find and apply zkbd key config
+typeset -g ZKBD_CONFIG
+
+check_kbd() {
+    file=$1
+    if [ -f "$file" ]; then
+        ZKBD_CONFIG="$file"
+        source "$file"
     fi
 }
 
-# skip cygwin
-if [ "$TERM" = "cygwin" ]; then
-
-    load_zkdb_file
-
-elif [ "$OS" = "Windows_NT" ]; then
-
-    bindkey "^[[H" beginning-of-line
-    bindkey "^[[F" end-of-line
-    bindkey "^[[3~" delete-char
-    bindkey "^[[2~" overwrite-mode
-    bindkey '^[[1;5C' forward-word
-    bindkey '^[[1;5D' backward-word
-
-#else #  linux
-#   load_zkdb_file
+check_kbd ~/.zkbd/$TERM-$VENDOR-$OSTYPE
+if [ "$ZKBD_CONFIG" = "" ]; then
+    check_kbd ~/.zkbd/$TERM-$VENDOR
+fi
+if [ "$ZKBD_CONFIG" = "" ]; then
+    check_kbd ~/.zkbd/$TERM
 fi
 
-bindkey "${key[Home]}" beginning-of-line
-bindkey "${key[End]}" end-of-line
-bindkey "${key[Delete]}" delete-char
-bindkey "${key[Insert]}" overwrite-mode
-#  Ctrl-left-arrow and Ctrl-right-arrow for word moving
+if [ "$ZKBD_CONFIG" = "" ]; then
+    echo -e "\e[0;32m"
+    echo
+    echo "not found: ~/.zkbd/$TERM-$VENDOR-$OSTYPE"
+    echo "generate: autoload zkbd; zkbd; cp ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ~/.zkbd/$TERM-$VENDOR-$OSTYPE"
+    echo -e "\e[0;30m"
+
+else
+    bindkey "${key[Home]}" beginning-of-line
+    bindkey "${key[End]}" end-of-line
+    bindkey "${key[Delete]}" delete-char
+    bindkey "${key[Insert]}" overwrite-mode
+fi
+
+# Ctrl-left-arrow and Ctrl-right-arrow for word moving
 #bindkey '\e[5C' forward-word
 #bindkey '\e[5D' backward-word
 bindkey '^[[1;5C' forward-word
