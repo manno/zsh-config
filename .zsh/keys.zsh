@@ -51,3 +51,8 @@ bindkey '^[[1;5D' backward-word
 # all
 bindkey ' ' magic-space                 # also do history expansion on space
 bindkey '^I' complete-word              # complete on tab, leave expansion to _expand
+
+# edit command line in editor
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
