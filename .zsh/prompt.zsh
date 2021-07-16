@@ -1,7 +1,7 @@
 setopt prompt_subst
 autoload colors
 colors
-funny=.
+funny=
 del="%{$fg[black]%}$funny%{$reset_color%}"
 
 # Chroot

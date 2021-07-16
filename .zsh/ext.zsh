@@ -13,8 +13,8 @@ fi
 
 # Load RVM, path already added in .profile
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
-    rvm_path=$HOME/.rvm
-    . "$HOME/.rvm/scripts/rvm" 
+  rvm_path=$HOME/.rvm
+  . "$HOME/.rvm/scripts/rvm" 
 fi
 
 # Add GOPATH/bin to PATH

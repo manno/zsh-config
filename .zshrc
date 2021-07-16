@@ -27,10 +27,5 @@ path=(/sbin /usr/sbin /usr/local/sbin $path)
 ## Load more modules
 autoload zargs
 
-## Show ssh agent keys
-if [ -x /usr/bin/ssh-add ] && [ "$SSH_AUTH_SOCK" != "" ] && [ -r "$SSH_AUTH_SOCK" ]; then
-    /usr/bin/ssh-add -l
-fi
-
 ## Needs to go after other bindkey statements
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
